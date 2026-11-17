@@ -17,7 +17,8 @@
  * @returns {TNode[]} An array of nodes forming the shortest path from s to t,
  *   Returns an empty array if no path from s to t exists.
  */
-function shortestPathBFS(s,t,g) {
+function shortestPathBFS(s,t,g) 
+{}
     let path = [];
     let visitedSet = new Set();
     let prevMap = new Map();
@@ -26,7 +27,21 @@ function shortestPathBFS(s,t,g) {
 
     // Implementér resten af koden herunder
     // ...
-    
+enqueue(s);
+visitedSet.add(g.key(s));
+while (!q.isEmpty()) {
+    let n = q.dequeue();
+    if (g.identicalNodes(n, t)) {
+        prevMap.set(g.key(t), n);
+        break;
+    }
+    for (let neighbor of g.neighbors(n)) {
+        if (!visitedSet.has(g.key(neighbor))) {
+            visitedSet.add(g.key(neighbor));
+            prevMap.set(g.key(neighbor), n);
+            q.enqueue(neighbor);
+        }
+        
+    }    
     return path;
-}  
-
+    }    
